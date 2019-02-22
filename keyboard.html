@@ -1,0 +1,388 @@
+<html>
+<head>
+<title>Tracker Keyboard Hinter</title>
+<style>
+
+body{
+	background: #f2ebe1;
+	color: #18171c;
+	font-size: 14px;
+	font-family: 'Roboto', sans-serif;
+	margin: 20px;
+}
+
+a{
+	color: #47628e;
+	font-size: 11px;
+	cursor: pointer;
+}
+
+.line{
+	margin-left: 40px;
+	margin-top: 10px;
+}
+
+.hint{
+	position: absolute;
+	margin-top: -4px;
+	margin-left: -18px;
+	color: #9a8691;
+}
+
+.key{
+	display: inline-block;
+	border: 1px solid black;
+	/* vertical-align: bottom; */
+	text-align: middle;
+	padding-bottom: 10px;
+}
+
+.key-f{
+	width: 20px;
+	padding-top: 80px;
+	padding-left: 20px;
+	background: #eeede9;
+}
+
+.key-s{
+	width: 20px;
+	position: absolute;
+	margin-top: -2px;
+	margin-left: -20px;
+	padding-top: 50px;
+	padding-left: 20px;
+	background: #e1e0dc;
+}
+
+.key-f1{
+	background: #e7e7e3;
+}
+
+.key-s1{
+	background: #dededa;
+}
+
+.key-f2{
+	background: #e0e0dc;
+}
+
+.key-s2{
+	background: #d4d5d1;
+}
+
+.key-lit{
+	background: #f3dbdd;
+	background: linear-gradient(to bottom, #f4cfdb 0%,#efd0d4 39%,#efd7d2 100%);
+}
+
+.chords{
+	margin-left: 20px;
+	margin-top: 10px;
+	padding: 5px;
+	min-width: 350px;
+	min-height: 200px;
+	border: 1px solid #999;
+	display: inline-block;
+	vertical-align: top;
+}
+
+.chords > table{
+    border-spacing: 7px;
+    border-collapse: separate;
+}
+
+tr:nth-child(even){
+	/*background-color: #fafafa;*/
+}
+
+.triads{
+	/*font-weight: 600;*/
+}
+
+.triads-o1{
+	color: #622;
+}
+
+.triads-o2{
+	color: #226;
+}
+
+.triads-o3{
+	color: #262;
+}
+
+</style>
+<script src="/jquery-1.11.3.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+</head>
+
+<div style="margin-left: 10px; margin-top: 15px;">
+Scale:
+<select id="scale">
+	<option value="" selected="true"></option>
+	<option value="major">major</option>
+	<option value="minor">minor</option>
+	<option value="pentatonic">pentatonic</option>
+	<option value="lydian">lydian (#4)</option>
+	<option value="mixolydian">mixolydian (b7)</option>
+	<option value="dorian">dorian (b3 b7)</option>
+	<option value="phrygian">phrygian (b2 b3 b6 b7)</option>
+	<option value="locrian">locrian (b2 b3 b5 b6 b7)</option>
+	<option value="harmonic_minor">harmonic minor</option>
+	<option value="melodic_minor">melodic minor</option>
+	<option value="byzantine">byzantine mode</option>
+	<option value="gypsy">gypsy mode</option>
+	<option value="neapolitan_major">neapolitan major</option>
+	<option value="neapolitan_minor">neapolitan minor</option>
+	<option value="augmented_fifth">augmented fifth</option>
+	<option value="whole_tone">whole tone scale</option>
+</select>
+<select id="scale-key">
+	<option value="0" selected="true">C</option>
+	<option value="1">C#</option>
+	<option value="2">D</option>
+	<option value="3">D#</option>
+	<option value="4">E</option>
+	<option value="5">F</option>
+	<option value="6">F#</option>
+	<option value="7">G</option>
+	<option value="8">G#</option>
+	<option value="9">A</option>
+	<option value="10">A#</option>
+	<option value="11">B</option>
+</select>
+</div>
+
+<br>
+<hr>
+<br>
+
+
+milkytracker <a onclick="$('#section-milky').toggle();">[-]</a>
+
+
+<div class="section" id="section-milky">
+
+<div style="display:inline-block;">
+<div class="line">
+	<div class="key key-f note-0 key-f1" oct="2"><div class="hint"></div><span class="keybind">Q</span></div>
+	<div class="key key-s note-1 key-s1" oct="2"><div class="hint"></div><span class="keybind">2</span></div>
+	<div class="key key-f note-2 key-f1" oct="2"><div class="hint"></div><span class="keybind">W</span></div>
+	<div class="key key-s note-3 key-s1" oct="2"><div class="hint"></div><span class="keybind">3</span></div>
+	<div class="key key-f note-4 key-f1" oct="2"><div class="hint"></div><span class="keybind">E</span></div>
+	<div class="key key-f note-5 key-f1" oct="2"><div class="hint"></div><span class="keybind">R</span></div>
+	<div class="key key-s note-6 key-s1" oct="2"><div class="hint"></div><span class="keybind">5</span></div>
+	<div class="key key-f note-7 key-f1" oct="2"><div class="hint"></div><span class="keybind">T</span></div>
+	<div class="key key-s note-8 key-s1" oct="2"><div class="hint"></div><span class="keybind">6</span></div>
+	<div class="key key-f note-9 key-f1" oct="2"><div class="hint"></div><span class="keybind">Y</span></div>
+	<div class="key key-s note-10 key-s1" oct="2"><div class="hint"></div><span class="keybind">7</span></div>
+	<div class="key key-f note-11 key-f1" oct="2"><div class="hint"></div><span class="keybind">U</span></div>
+		<div class="key key-f note-0 key-f2" oct="3"><div class="hint"></div><span class="keybind">I</span></div>
+		<div class="key key-s note-1 key-s2" oct="3"><div class="hint"></div><span class="keybind">9</span></div>
+		<div class="key key-f note-2 key-f2" oct="3"><div class="hint"></div><span class="keybind">O</span></div>
+		<div class="key key-s note-3 key-s2" oct="3"><div class="hint"></div><span class="keybind">0</span></div>
+		<div class="key key-f note-4 key-f2" oct="3"><div class="hint"></div><span class="keybind">P</span></div>
+		<div class="key key-f note-5 key-f2" oct="3"><div class="hint"></div><span class="keybind">{[</span></div>
+		<div class="key key-s note-6 key-s2" oct="3"><div class="hint"></div><span class="keybind">+=</span></div>
+		<div class="key key-f note-7 key-f2" oct="3"><div class="hint"></div><span class="keybind">}]</span></div>
+</div>
+<div class="line">
+	<div class="key key-f note-0" oct="1"><div class="hint"></div><span class="keybind">Z</span></div>
+	<div class="key key-s note-1" oct="1"><div class="hint"></div><span class="keybind">S</span></div>
+	<div class="key key-f note-2" oct="1"><div class="hint"></div><span class="keybind">X</span></div>
+	<div class="key key-s note-3" oct="1"><div class="hint"></div><span class="keybind">D</span></div>
+	<div class="key key-f note-4" oct="1"><div class="hint"></div><span class="keybind">C</span></div>
+	<div class="key key-f note-5" oct="1"><div class="hint"></div><span class="keybind">V</span></div>
+	<div class="key key-s note-6" oct="1"><div class="hint"></div><span class="keybind">G</span></div>
+	<div class="key key-f note-7" oct="1"><div class="hint"></div><span class="keybind">B</span></div>
+	<div class="key key-s note-8" oct="1"><div class="hint"></div><span class="keybind">H</span></div>
+	<div class="key key-f note-9" oct="1"><div class="hint"></div><span class="keybind">N</span></div>
+	<div class="key key-s note-10" oct="1"><div class="hint"></div><span class="keybind">J</span></div>
+	<div class="key key-f note-11" oct="1"><div class="hint"></div><span class="keybind">M</span></div>
+		<div class="key key-f note-0 key-f1" oct="2"><div class="hint"></div><span class="keybind">&lt;,</span></div>
+		<div class="key key-s note-1 key-s1" oct="2"><div class="hint"></div><span class="keybind">L</span></div>
+		<div class="key key-f note-2 key-f1" oct="2"><div class="hint"></div><span class="keybind">&gt;.</span></div>
+		<div class="key key-s note-3 key-s1" oct="2"><div class="hint"></div><span class="keybind">:;</span></div>
+		<div class="key key-f note-4 key-f1" oct="2"><div class="hint"></div><span class="keybind">?/</span></div>
+</div>
+</div>
+	<div class="chords">
+		triads:
+		<table></table>
+	</div>
+</div>
+
+
+<br>
+<hr>
+<br>
+
+openmpt <a onclick="$('#section-ompt').toggle();">[-]</a>
+
+<br>
+
+<div class="section" id="section-ompt">
+
+<div style="display:inline-block;">
+<div class="line">
+	<div class="key key-f note-0" oct="1"><div class="hint"></div><span class="keybind">Q</span></div>
+	<div class="key key-s note-1" oct="1"><div class="hint"></div><span class="keybind">W</span></div>
+	<div class="key key-f note-2" oct="1"><div class="hint"></div><span class="keybind">E</span></div>
+	<div class="key key-s note-3" oct="1"><div class="hint"></div><span class="keybind">R</span></div>
+	<div class="key key-f note-4" oct="1"><div class="hint"></div><span class="keybind">T</span></div>
+	<div class="key key-f note-5" oct="1"><div class="hint"></div><span class="keybind">Y</span></div>
+	<div class="key key-s note-6" oct="1"><div class="hint"></div><span class="keybind">U</span></div>
+	<div class="key key-f note-7" oct="1"><div class="hint"></div><span class="keybind">I</span></div>
+	<div class="key key-s note-8" oct="1"><div class="hint"></div><span class="keybind">O</span></div>
+	<div class="key key-f note-9" oct="1"><div class="hint"></div><span class="keybind">P</span></div>
+	<div class="key key-s note-10" oct="1"><div class="hint"></div><span class="keybind">{[</span></div>
+	<div class="key key-f note-11" oct="1"><div class="hint"></div><span class="keybind">}]</span></div>
+</div>
+<div class="line">
+	<div class="key key-f note-0 key-f1" oct="2"><div class="hint"></div><span class="keybind">A</span></div>
+	<div class="key key-s note-1 key-s1" oct="2"><div class="hint"></div><span class="keybind">S</span></div>
+	<div class="key key-f note-2 key-f1" oct="2"><div class="hint"></div><span class="keybind">D</span></div>
+	<div class="key key-s note-3 key-s1" oct="2"><div class="hint"></div><span class="keybind">F</span></div>
+	<div class="key key-f note-4 key-f1" oct="2"><div class="hint"></div><span class="keybind">G</span></div>
+	<div class="key key-f note-5 key-f1" oct="2"><div class="hint"></div><span class="keybind">H</span></div>
+	<div class="key key-s note-6 key-s1" oct="2"><div class="hint"></div><span class="keybind">J</span></div>
+	<div class="key key-f note-7 key-f1" oct="2"><div class="hint"></div><span class="keybind">K</span></div>
+	<div class="key key-s note-8 key-s1" oct="2"><div class="hint"></div><span class="keybind">L</span></div>
+	<div class="key key-f note-9 key-f1" oct="2"><div class="hint"></div><span class="keybind">:;</span></div>
+	<div class="key key-s note-10 key-s1" oct="2"><div class="hint"></div><span class="keybind">"'</span></div>
+	<div class="key key-f note-11 key-f1" oct="2"><div class="hint"></div><span class="keybind">|\</span></div>
+</div>
+<div class="line">
+	<div class="key key-f note-0 key-f2" oct="3"><div class="hint"></div><span class="keybind">Z</span></div>
+	<div class="key key-s note-1 key-s2" oct="3"><div class="hint"></div><span class="keybind">X</span></div>
+	<div class="key key-f note-2 key-f2" oct="3"><div class="hint"></div><span class="keybind">C</span></div>
+	<div class="key key-s note-3 key-s2" oct="3"><div class="hint"></div><span class="keybind">V</span></div>
+	<div class="key key-f note-4 key-f2" oct="3"><div class="hint"></div><span class="keybind">B</span></div>
+	<div class="key key-f note-5 key-f2" oct="3"><div class="hint"></div><span class="keybind">N</span></div>
+	<div class="key key-s note-6 key-s2" oct="3"><div class="hint"></div><span class="keybind">M</span></div>
+	<div class="key key-f note-7 key-f2" oct="3"><div class="hint"></div><span class="keybind">&lt;,</span></div>
+	<div class="key key-s note-8 key-s2" oct="3"><div class="hint"></div><span class="keybind">&gt;.</span></div>
+	<div class="key key-f note-9 key-f2" oct="3"><div class="hint"></div><span class="keybind">/?</span></div>
+</div>
+</div>
+	<div class="chords">
+		triads:
+		<table></table>
+	</div>
+</div>
+
+
+<script>
+
+var notes = ["C","C#","D","D#","E","F","F#","G","G#","A","A#","B"];
+
+function sn(str){
+	return notes.indexOf(str);
+}
+
+var scales={
+	"": [],
+	major: [sn("C"), sn("D"), sn("E"), sn("F"), sn("G"), sn("A"), sn("B")],
+	minor: [sn("C"), sn("D"), sn("D#"), sn("F"), sn("G"), sn("G#"), sn("A#")],
+	lydian: [sn("C"), sn("D"), sn("E"), sn("F#"), sn("G"), sn("A"), sn("B")],
+	mixolydian: [sn("C"), sn("D"), sn("E"), sn("F"), sn("G"), sn("A"), sn("A#")],
+	dorian: [sn("C"), sn("D"), sn("D#"), sn("F"), sn("G"), sn("A"), sn("A#")],
+	phrygian: [sn("C"), sn("C#"), sn("D#"), sn("F"), sn("G"), sn("G#"), sn("A#")],
+	locrian: [sn("C"), sn("C#"), sn("D#"), sn("F"), sn("F#"), sn("G#"), sn("A#")],
+	harmonic_minor: [sn("C"), sn("D"), sn("D#"), sn("F"), sn("G"), sn("G#"), sn("B")],
+	melodic_minor: [sn("C"), sn("D"), sn("D#"), sn("F"), sn("G"), sn("A"), sn("B")],
+	pentatonic: [sn("C"), sn("D"), sn("E"), -1, sn("G"), sn("A"), -1],
+	//blue_scale: [sn("C"), sn("D"), sn("E"), sn("F"), sn("G"), sn("A"), sn("A#"), sn("B")],
+	byzantine: [sn("C"), sn("C#"), sn("E"), sn("F"), sn("G"), sn("G#"), sn("B")],
+	gypsy: [sn("C"), sn("C#"), sn("E"), sn("F"), sn("G"), sn("A"), sn("A#")],
+	neapolitan_major: [sn("C"), sn("C#"), sn("D#"), sn("F"), sn("G"), sn("A"), sn("B")],
+	neapolitan_minor: [sn("C"), sn("C#"), sn("D#"), sn("F"), sn("G"), sn("G#"), sn("B")],
+	augmented_fifth: [sn("C"), sn("D"), sn("E"), sn("F"), sn("G"), sn("G#"), sn("A"), sn("B")],
+	whole_tone: [sn("C"), sn("D"), sn("E"), sn("F#"), sn("G#"), sn("A#")]
+};
+
+var key, scale;
+
+function redraw(){
+	key = parseInt($("#scale-key")[0].value);
+	scale = scales[$("#scale")[0].value];
+	if(scale){
+		//keyboard
+		for(var i=0; i<12; i++){
+			var note = (i + key) % 12;
+			var degree = scale.indexOf(i) + 1;
+			
+			$(".note-"+note).each(function(){
+				if(degree){
+					$(this).addClass("key-lit");
+					$(this).find(".hint").html(romanize(degree)).attr("deg", degree);
+				}else{
+					$(this).removeClass("key-lit");
+					$(this).find(".hint").html("");
+				}
+			});
+		}
+		
+		//triads
+		$(".chords > table").each(function(){
+			var chord_list = $(this);
+			var section = chord_list.parent().parent();
+			chord_list.html("");
+			scale.forEach((base_note, base_n) => {
+			  if(base_note != -1){
+				var base_degree = base_n+1;
+				var base_degree_s = romanize(base_degree);
+					var n1 = scale[base_n];
+					var n3 = scale[(base_n+2)%scale.length];
+					if( ((Math.abs(n3-n1) < (scale.length/2)) ? (n3-n1) : ((n3+12)-n1) ) == 3)
+						base_degree_s = base_degree_s.toLowerCase();
+				
+				var s =  "<td>("+notes[base_note]+")</td>";
+					s += "<td><strong>"+base_degree_s+"</strong>: </td>";
+				
+				for(var i=0; i<3; i++){
+					var binds = [];
+					var n = (base_n+i*2) % scale.length;
+					var note = (scale[n] + key) % 12;
+					  var note_elements = section.find(".note-"+note);
+						  note_elements.sort((a,b) => {
+							  return ( parseInt($(a).attr("oct")) - parseInt($(b).attr("oct")) );
+						  });
+					note_elements.each(function(){
+						var key_name = $(this).find(".keybind").first().html();
+						binds.push( '<span class="triads triads-o'+($(this).attr("oct"))+'">'+key_name+'</span>' );
+					});
+					//s += "<td>"+binds.join('/')+"</td>";
+					s += '<td style="padding-left: 15px;">'+binds.join(' ')+'</td>';
+				}
+				chord_list.append("<tr>"+s+"</tr>");
+			  }
+			});
+		});
+	}
+}
+
+$(function(){
+	$("#scale").change(redraw);
+	$("#scale-key").change(redraw);
+});
+
+
+//https://stackoverflow.com/a/9083076
+function romanize (num) {
+    if (isNaN(num))
+        return NaN;
+    var digits = String(+num).split(""),
+        key = ["","C","CC","CCC","CD","D","DC","DCC","DCCC","CM",
+               "","X","XX","XXX","XL","L","LX","LXX","LXXX","XC",
+               "","I","II","III","IV","V","VI","VII","VIII","IX"],
+        roman = "",
+        i = 3;
+    while (i--)
+        roman = (key[+digits.pop() + (i * 10)] || "") + roman;
+    return Array(+digits.join("") + 1).join("M") + roman;
+}
+
+</script>
+
+</html>
