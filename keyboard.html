@@ -337,7 +337,7 @@ function redraw(){
 					if( ((Math.abs(n3-n1) < (scale.length/2)) ? (n3-n1) : ((n3+12)-n1) ) == 3)
 						base_degree_s = base_degree_s.toLowerCase();
 				
-				var s =  "<td>("+notes[base_note]+")</td>";
+				var s =  "<td>("+notes[(base_note+key) % 12]+")</td>";
 					s += "<td><strong>"+base_degree_s+"</strong>: </td>";
 				
 				for(var i=0; i<3; i++){
